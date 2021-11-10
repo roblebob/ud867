@@ -41,7 +41,13 @@ def applyTwice(func, arg){
 }
 
 foo = 5
-def fooDoubledTwice = applyTwice(doubleIt, foo)
+
+def doubleIt2(x) {
+    x + x
+}
+
+
+def fooDoubledTwice = applyTwice(doubleIt2, foo)
 println "Applying doubleIt twice to $foo equals $fooDoubledTwice"
 
 /*

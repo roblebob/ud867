@@ -13,7 +13,15 @@ done its work. To take a familiar example, when you're getting up in the
 morning, you can't put on your shoes without putting on your socks first.
 Let's declare and configure some tasks to represent this process.
 
+run example:
+
+>  gradle -q putOnShoes
+
+(-q  ...quiet)
 */
+
+   
+
 
 task putOnSocks {
     doLast {
@@ -40,6 +48,10 @@ afterwards. To continue our example, every time you eat breakfast, you must
 brush your teeth afterwards. Let's create those tasks, and declare the
 relationship between them.
 
+
+run example:
+
+    gradle -q eatBreakfast
 */
 
 task eatBreakfast {
@@ -69,6 +81,10 @@ on a fragrance like perfume or cologne. Putting on a fragrance doesn't require
 showering, and showering doesn't require putting on a fragrance, but if we're
 going to both take a shower and also put on a fragrance, we should take the
 shower first. Let's create those tasks and the relationship between them.
+
+run example:
+
+   gradle -q putOnFragrance takeShower 
 
 */
 
