@@ -18,13 +18,13 @@ way we can install both flavors on the same device.
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.1"
+    compileSdkVersion 31
+    buildToolsVersion '31.0.0'
 
     defaultConfig {
         applicationId "com.example.udacity.declaringflavors"
         minSdkVersion 15
-        targetSdkVersion 24
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
     }
@@ -36,12 +36,17 @@ android {
         }
     }
 
+    flavorDimensions "version"
     productFlavors {
         free {
-            applicationId "com.example.udacity.declaringflavors.free"
+            applicationIdSuffix ".free"
+            dimension "version"
+            versionNameSuffix "-free"
         }
         paid {
-            applicationId "com.example.udacity.declaringflavors.paid"
+            applicationIdSuffix ".paid"
+            dimension "version"
+            versionNameSuffix "-paid"
         }
     }
 }
@@ -78,15 +83,16 @@ configuration block. For example, let's say the paid version of our app
 requires a new Android SDK. We can enforce that like so:
 
 */
-
-//productFlavors {
-//    paid {
-//        minSdkVersion 23
-//    }
-//}
+android {
+    productFlavors {
+        paid {
+            minSdkVersion 23
+        }
+    }
+}
 
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:24.1.1'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.3.1'
 }
