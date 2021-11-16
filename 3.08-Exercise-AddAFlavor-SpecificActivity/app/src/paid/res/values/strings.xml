@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Flavor Specific Activity - Paid</string>
+
+    <string name="toast_text">Upgrade to the paid version to get a joke! (paid)</string>
+    <string name="joke_text">Joke,Joke,Joke,Joke</string>
+    <string name="title_activity_joke">"Joke Activity "</string>
+</resources>

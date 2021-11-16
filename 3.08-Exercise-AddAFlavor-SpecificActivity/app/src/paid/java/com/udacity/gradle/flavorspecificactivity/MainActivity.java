@@ -1,26 +1,30 @@
-package com.udacity.gradle.flavorspecificactivity.paid;
+package com.udacity.gradle.flavorspecificactivity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
-import com.udacity.gradle.flavorspecificactivity.R;
+import com.udacity.gradle.flavorspecificactivity.paid.JokeActivity;
 
 
-public class JokeActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_joke);
+        setContentView(R.layout.activity_main);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_joke, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
@@ -37,5 +41,11 @@ public class JokeActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void tellJoke(View view) {
+
+        Intent intent = new Intent(getApplicationContext(), JokeActivity.class);
+        startActivity(intent);
     }
 }
