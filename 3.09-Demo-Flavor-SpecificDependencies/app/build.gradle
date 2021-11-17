@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.1"
+    compileSdkVersion 31
+    buildToolsVersion '31.0.0'
 
     defaultConfig {
         applicationId "com.udacity.gradle.adsupported"
-        minSdkVersion 15
-        targetSdkVersion 24
+        minSdkVersion 24
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
     }
@@ -17,12 +17,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    flavorDimensions "version"
     productFlavors{
         free {
-            applicationId "com.udacity.gradle.adsupported.free"
+            dimension "version"
+            applicationIdSuffix ".free"
+            versionNameSuffix "-free"
         }
         paid {
-            applicationId "com.udacity.gradle.adsupported.paid"
+            dimension "version"
+            applicationIdSuffix ".paid"
+            versionNameSuffix "-paid"
         }
     }
 }
@@ -51,9 +57,19 @@ configurations are prefixed with.
 */
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:24.1.1'
-    freeCompile 'com.google.android.gms:play-services-ads:9.4.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    freeImplementation 'com.google.android.gms:play-services-ads:20.4.0'
+
+    // For apps targeting Android 12, add WorkManager dependency.
+    constraints {
+        implementation('androidx.work:work-runtime:2.7.0') {
+            because '''androidx.work:work-runtime:2.1.0 pulled from play-services-ads
+                   has a bug using PendingIntent without FLAG_IMMUTABLE or
+                   FLAG_MUTABLE and will fail in apps targeting S+.'''
+        }
+    }
+
 }
 
 /*
