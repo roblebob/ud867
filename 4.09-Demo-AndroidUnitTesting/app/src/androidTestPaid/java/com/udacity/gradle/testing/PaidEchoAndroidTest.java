@@ -1,6 +1,6 @@
 package com.udacity.gradle.testing;
 
-import android.support.test.runner.AndroidJUnit4;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.udacity.gradle.testing.paid.PaidEcho;
 
